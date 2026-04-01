@@ -1,4 +1,6 @@
 import org.junit.jupiter.api.Test;
+import racingcar.Car;
+import racingcar.RacingGame;
 
 import java.util.ArrayList;
 import java.util.List;

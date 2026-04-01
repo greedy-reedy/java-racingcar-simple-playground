@@ -1,4 +1,6 @@
 import org.junit.jupiter.api.Test;
+import racingcar.Car;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class CarTest {
