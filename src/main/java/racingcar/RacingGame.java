@@ -13,13 +13,19 @@ public class RacingGame {
     public void race(int count) {
         for (int i = 0; i < count; i++) {
             for (Car car : cars) {
-                car.move((int) (Math.random() * 10));
+                int randomValue = (int) (Math.random() * 10);
+                if (randomValue >= 4) {
+                    car.move();
+                }
             }
         }
     }
 
     public List<Car> getWinners() {
-        int maxPosition = cars.stream().mapToInt(Car::getPosition).max().getAsInt();
+        int maxPosition = cars.stream()
+                .mapToInt(Car::getPosition)
+                .max()
+                .getAsInt();
 
         return cars.stream().filter(car -> car.getPosition() == maxPosition).collect(Collectors.toList());
     }

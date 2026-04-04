@@ -6,16 +6,15 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class CarTest {
 
     @Test
-    void carGoTest() {
+    void if_car_moves_position_increases() {
         Car car = new Car("A");
-        car.move(4);
+        car.move();
         assertThat(car.getPosition()).isEqualTo(1);
     }
 
     @Test
-    void carStopTest() {
-        Car car = new Car("B");
-        car.move(3);
+    void initial_position_is_zero() {
+        Car car = new Car("A");
         assertThat(car.getPosition()).isEqualTo(0);
     }
 }

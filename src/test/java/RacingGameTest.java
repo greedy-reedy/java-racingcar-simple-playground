@@ -20,9 +20,7 @@ public class RacingGameTest {
         cars.add(carB);
         cars.add(carC);
 
-        carA.move(4);
-        carB.move(3);
-        carC.move(3);
+        carA.move();
 
         RacingGame racingGame = new RacingGame(cars);
         List<Car> winners = racingGame.getWinners();
@@ -42,9 +40,8 @@ public class RacingGameTest {
         cars.add(carB);
         cars.add(carC);
 
-        carA.move(4);
-        carB.move(4);
-        carC.move(3);
+        carA.move();
+        carB.move();
 
         RacingGame racingGame = new RacingGame(cars);
         List<Car> winners = racingGame.getWinners();
