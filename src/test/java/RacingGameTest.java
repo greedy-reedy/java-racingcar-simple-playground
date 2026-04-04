@@ -10,21 +10,47 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class RacingGameTest {
 
     @Test
-    public void whenRacingGame_thenReturnWinner() {
+    public void winner_is_the_car_that_went_the_farthest(){
         List<Car> cars = new ArrayList<>();
-        cars.add(new Car("A"));
-        cars.add(new Car("B"));
-        cars.add(new Car("C"));
-        cars.add(new Car("D"));
-        cars.add(new Car("E"));
+        Car carA = new Car("A");
+        Car carB = new Car("B");
+        Car carC = new Car("C");
 
-        RacingGame game = new RacingGame(cars);
-        game.race(10);
+        cars.add(carA);
+        cars.add(carB);
+        cars.add(carC);
 
-        cars.forEach(car -> System.out.println(car.getName() + " : " + car.getPosition()));
-        game.getWinners().forEach(car -> System.out.println(car.getName()));
+        carA.move(4);
+        carB.move(3);
+        carC.move(3);
 
-        assertThat(game.getWinners()).isNotEmpty();
-        assertThat(game.getWinners().size()).isLessThanOrEqualTo(cars.size());
+        RacingGame racingGame = new RacingGame(cars);
+        List<Car> winners = racingGame.getWinners();
+
+        assertThat(winners).hasSize(1);
+        assertThat(winners.get(0).getName()).isEqualTo("A");
+    }
+
+    @Test
+    public void can_have_multiple_winners() {
+        List<Car> cars = new ArrayList<>();
+        Car carA = new Car("A");
+        Car carB = new Car("B");
+        Car carC = new Car("C");
+
+        cars.add(carA);
+        cars.add(carB);
+        cars.add(carC);
+
+        carA.move(4);
+        carB.move(4);
+        carC.move(3);
+
+        RacingGame racingGame = new RacingGame(cars);
+        List<Car> winners = racingGame.getWinners();
+
+        assertThat(winners).hasSize(2);
+        assertThat(winners).extracting(Car::getName)
+                .containsExactlyInAnyOrder("A", "B");
     }
 }
