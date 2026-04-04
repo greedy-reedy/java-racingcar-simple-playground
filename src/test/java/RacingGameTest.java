@@ -26,7 +26,7 @@ public class RacingGameTest {
         List<Car> winners = racingGame.getWinners();
 
         assertThat(winners).hasSize(1);
-        assertThat(winners.get(0).getName()).isEqualTo("A");
+        assertThat(winners.get(0)).isEqualTo(carA);
     }
 
     @Test
@@ -47,7 +47,6 @@ public class RacingGameTest {
         List<Car> winners = racingGame.getWinners();
 
         assertThat(winners).hasSize(2);
-        assertThat(winners).extracting(Car::getName)
-                .containsExactlyInAnyOrder("A", "B");
+        assertThat(winners).containsExactlyInAnyOrder(carA,carB);
     }
 }
