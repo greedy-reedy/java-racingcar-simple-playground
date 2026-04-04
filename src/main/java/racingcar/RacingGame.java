@@ -13,6 +13,9 @@ public class RacingGame {
     }
 
     public void race(int count) {
+        if (count <= 0) {
+            throw new IllegalArgumentException("경주 횟수는 1회 이상이여야 합니다.");
+        }
         for (int i = 0; i < count; i++) {
             tryMoveCars();
         }
