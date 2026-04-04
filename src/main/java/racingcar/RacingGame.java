@@ -5,9 +5,11 @@ import java.util.stream.Collectors;
 
 public class RacingGame {
     private List<Car> cars;
+    private RandomValueGenerator randomValueGenerator;
 
-    public RacingGame(List<Car> cars) {
+    public RacingGame(List<Car> cars, RandomValueGenerator randomValueGenerator) {
         this.cars = cars;
+        this.randomValueGenerator = randomValueGenerator;
     }
 
     public void race(int count) {
@@ -15,15 +17,15 @@ public class RacingGame {
             tryMoveCars();
         }
     }
-    public void tryMoveCars(){
+
+    public void tryMoveCars() {
         for (Car car : cars) {
             moveIfPossible(car);
         }
     }
 
-    public void moveIfPossible(Car car){
-        int randomValue = (int) (Math.random() * 10);
-        if (randomValue >= 4) {
+    public void moveIfPossible(Car car) {
+        if (randomValueGenerator.generate() >= 4) {
             car.move();
         }
     }
