@@ -12,12 +12,19 @@ public class RacingGame {
 
     public void race(int count) {
         for (int i = 0; i < count; i++) {
-            for (Car car : cars) {
-                int randomValue = (int) (Math.random() * 10);
-                if (randomValue >= 4) {
-                    car.move();
-                }
-            }
+            tryMoveCars();
+        }
+    }
+    public void tryMoveCars(){
+        for (Car car : cars) {
+            moveIfPossible(car);
+        }
+    }
+
+    public void moveIfPossible(Car car){
+        int randomValue = (int) (Math.random() * 10);
+        if (randomValue >= 4) {
+            car.move();
         }
     }
 
